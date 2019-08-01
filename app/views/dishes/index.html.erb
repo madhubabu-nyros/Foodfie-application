@@ -1,0 +1,38 @@
+<div class="container">   
+  <h3>DISH LIST</h3>   
+    <div>   
+      <%= link_to 'Back', restaurants_path,  :class => 'btn btn-primary' %>   
+    </div>   
+    <br>   
+  <table border="2" class="table table-striped">   
+    <thead>   
+    <tr>   
+      <th>Id</th>   
+      <th>Name</th>   
+      <th>Image</th>   
+      <th>Price</th>   
+      <th>Rating</th>   
+      <th>Actions</th>   
+    </tr>   
+    </thead>   
+    <tbody>   
+      <% @dishes.each do |d| %>   
+        <tr>   
+          <td><%= d.id %></td>   
+          <td><%= d.name %></td> 
+          <td style="width: 100px;">
+            <% d.pictures.each do|p|%>
+              <%= image_tag(p.name_url, :class => 'image') %> 
+            <% end %> 
+          </td>  
+          <td><%= d.price %></td>   
+          <td><%= link_to 'Add Rating', new_dish_rating_path(d),  :class => 'btn btn-warning' %></td>   
+          <td>   
+            <%= link_to 'Edit', edit_dish_path(d), :class => 'btn btn-info' %>   
+            <%= link_to 'Delete', dish_path(d), method: :delete, :class => 'btn btn-danger' %>   
+          </td>   
+        </tr>   
+      <% end %>   
+    </tbody>   
+  </table>   
+</div>

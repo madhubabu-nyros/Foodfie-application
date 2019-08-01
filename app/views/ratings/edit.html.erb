@@ -1,0 +1,8 @@
+<div class="container center">   
+  <%= form_for @rating, url: {action: :update} do |f| %>   
+      <div>   
+        <h3>Add Rating</h3>   
+      </div>
+      <%= render :partial => "ratings/form", :locals => {:f => f} %>  
+  <% end %>   
+</div>  

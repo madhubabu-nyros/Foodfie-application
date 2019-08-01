@@ -1,0 +1,19 @@
+default: &default
+   adapter: mysql2
+   database: Foodfie
+   username: root
+   password: root123*
+   host: localhost
+   port: 3000
+
+development:
+  <<: *default
+  database: Foodfie
+
+test:
+  <<: *default
+  database: Foodfie
+
+production:
+  <<: *default
+  database: Foodfie

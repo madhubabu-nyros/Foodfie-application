@@ -1,0 +1,32 @@
+<% dishes.each do |d| %>
+	<% d.pictures.each do|p|%>
+	  <div class="col-md-4 image-box">
+	  	<div class="card">
+				<%= link_to image_tag(p.name_url, :class => 'image-box1'), dishes_show_path(d)	 %>
+				<%= image_tag ("8.png") , :class => "fav"%>
+				<div class="rating"><%= d.ratings.average(:number) %></div>
+				<div class="votes"><%= d.ratings.count(:number) %> votes</div>
+				<figcaption>
+					<h2 class="caption"><%= d.name %></h2>
+					<% d.restaurants.each do |r|%>
+						<h2 class="restaurant"><%= r.name %><span style="float: right;margin-right: 10px;font-weight: bold;">$<%= d.price%></span></h2>	
+					<% end %>
+				</figcaption>
+			</div>
+			<div class="location1">	
+				<% d.restaurants.each do |r|%>
+					<% r.locations.each do |l| %>
+							<div class="address">
+								<div style="margin-right: 7px">
+									<a style="color: #7b90a2;" target="_blank" href="http://maps.google.com/?q=<%=r.name %> <%=(r.locations.pluck(:street, :city, :state, :pincode,:country).join(',')) %>"><%= image_tag ("4.png"), :style => 'width:25px;' %></a>
+								</div>
+								<div>	
+									<a style="color: #7b90a2;" target="_blank" href="http://maps.google.com/?q=<%=r.name %> <%=(r.locations.pluck(:street, :city, :state, :pincode,:country).join(',')) %>"><%= l.street %>, <%= l.city %>, <%= l.state %>, <%= l.pincode %>, <%= l.country %></a>
+								</div>
+							</div>
+					<% end %>
+				<% end %>
+			</div>	
+		</div>
+	<% end %>
+<% end %>

@@ -1,0 +1,48 @@
+<div class="menu">
+	<nav class= 'navbar navbar-default navbar-fixed-top'>
+		<div>
+			<%= image_tag ("1.png")%>
+			<ul class="location">	
+				<li class="dropdown">
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SELECT LOCATION<span class="caret"></span></a>
+		      <ul class="dropdown-menu" role="menu">
+		        <input type="text" name=""> 
+		      </ul>
+		    </li>
+		  </ul>
+	  </div>
+	  <div>
+	  	<ul class="contact">
+	  		<li style="margin-right: 48px;">CONTACT US</li>
+	  		<li>SEARCH</li>
+	  	</ul>
+	  </div>
+	</nav>
+</div>
+<div class="dish">
+	<div class="col-md-3"  style="float: left;clear: both">
+		<% @dish.pictures.each do|p|%>
+				<%= image_tag(p.name_url.to_s, :class => 'image-box3') %><span class="caption1"><%= @dish.name %></span>
+			<% end %>
+		<% @dish.restaurants.each do|r|%>
+				<h2 class="restaurant_title"><%= r.name %></h2>
+		<% end %>
+		<hr> 
+	</div>
+	<div class="col-md-9 image-box"  style="float: left">
+		<div class="card">
+			<% @dish.pictures.each do|p|%>
+				<%= image_tag(p.name_url.to_s, :class => 'image-box2') %>
+			<% end %>
+			<%= image_tag ("8.png") , :class => "fav"%>
+			<div class="rating"><%= @dish.ratings.average(:number) %></div>
+			<div class="votes"><%= @dish.ratings.count(:number) %> votes</div>
+			<figcaption>
+				<h2 class="caption"><%= @dish.name %></h2>
+			<% @dish.restaurants.each do|r|%>
+				<h2 class="restaurant"><%= r.name %><span style="float: right;margin-right: 10px;font-weight: bold;">$<%= @dish.price%></span></h2>
+			<% end %> 	
+			</figcaption>
+		</div>
+	</div>
+</div>	

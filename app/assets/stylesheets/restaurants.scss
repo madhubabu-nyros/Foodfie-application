@@ -1,0 +1,48 @@
+// Place all the styles related to the restaurants controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.text-left
+{
+	margin-left: 14px;
+}
+.text-right
+{
+	margin-left: 47px;
+}
+.image
+{
+	height: 50px;
+    width: 67px;
+}
+.page
+{
+	margin: 35px auto;
+	width: 177px;
+}
+.current
+{
+	margin-left: 10px;
+    margin-right: 10px;
+}
+
+.modal-center
+{
+	width: 296px;
+}
+.modal-body  img
+{
+  width: 257px;
+}
+.restaurant {
+	border-radius: 5px;
+    margin: 100px auto;
+    width: 392px;
+    border: 1px solid #ccc;
+    padding: 50px;
+}
+.r-name {
+	text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}    

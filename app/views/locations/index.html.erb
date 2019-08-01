@@ -1,0 +1,37 @@
+<div class="container">   
+  <h3>Locations List</h3>   
+    <div>   
+      <%= link_to 'Back', restaurants_path %> 
+    </div>   
+    <br>   
+  <table border="2" class="table table-striped">   
+    <thead>   
+    <tr>   
+      <th>Id</th>   
+      <th>Street</th>   
+      <th>City</th>   
+      <th>State</th>   
+      <th>Pincode</th>   
+      <th>Country</th>   
+      <th>Actions</th>   
+    </tr>   
+    </thead>   
+    <tbody>   
+	    <% @locations.each do |l| %>   
+	      <tr>   
+	        <td><%= l.id %></td>   
+	        <td><%= l.street %></td>   
+	        <td><%= l.city %></td>   
+          <td><%= l.state %></td>   
+          <td><%= l.pincode %></td>   
+          <td><%= l.country %></td>   
+	        <td>   
+	          <%= link_to 'Show', location_path(l) %>   
+	          <%= link_to 'Edit', edit_location_path(l) %>   
+	          <%= link_to 'Delete', location_path(l), method: :delete %>   
+	        </td>   
+	      </tr>   
+	    <% end %>   
+    </tbody>   
+  </table>   
+</div>

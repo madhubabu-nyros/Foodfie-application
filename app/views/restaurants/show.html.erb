@@ -1,0 +1,8 @@
+<div class="restaurant">
+	<% @restaurant.pictures.each do|p|%>
+		<div><%= image_tag p.name_url, :style => 'height:300px;width:300px' %></div>
+	<% end %>
+	<div class="r-name"><%= @restaurant.name %></div>
+	<div style="text-align: center;">Dishes:<%= @restaurant.dishes.pluck(:name).join(',')%></div>
+	<%= link_to 'Back', restaurants_path,  :class => 'btn btn-primary', :style => 'margin-left: 110px;margin-top: 20px' %>
+</div>	

@@ -1,0 +1,37 @@
+<div class="container center">   
+  <%= form_for @dish, url: {action: :create} do |f| %>   
+      <div>   
+        <h3>Add Dish</h3>   
+      </div>
+      <div>   
+        <p>   
+          <%= "<div>#{@dish.errors.full_messages.first}</div>".html_safe if @dish.errors.any? %>   
+        <div class="form-group">   
+            <label>Dish Name</label>   
+            <%= f.text_field :name, :class => "form-control", :placeholder => 'Enter Dish Name' %>   
+        </div>
+        <div class="form-group">   
+            <label>Price</label>   
+            <%= f.text_field :price, :class => "form-control", :placeholder => 'Enter price' %>   
+        </div>
+        <div class="form-group">
+        	<label>Category</label>   
+        	<%= f.select( :category_id, options_from_collection_for_select(Category.all, "id", "name"), {}, {:class => 'form-control'}) %>
+        </div>
+        <div class="form-group"> 
+          <%= f.fields_for :pictures do |p|%>
+            <label>Upload Image</label> <br/>
+            <%= p.file_field :name%>
+          <%end%>
+        </div>	
+      <div>
+      <div class="form-group row">
+        <div class="text-left"> 
+          <%= link_to 'Back', dishes_path,	 :class => "btn btn-warning" %>   
+        </div>
+        <div class="text-right">  
+          <%= f.submit 'Create Dish', :class => "btn btn-info" %>   
+        </div>
+      </div>   
+  <% end %>   
+</div>  

@@ -1,0 +1,29 @@
+<div class="container center">   
+  <%= form_for @restaurant, url: {action: :update} do |f| %>   
+      <div>   
+        <h3>Update Restaurant</h3>   
+      </div>   
+      <div>   
+        <p>   
+          <%= "<div>#{@restaurant.errors.full_messages.first}</div>".html_safe if @restaurant.errors.any? %>   
+        <div class="form-group">   
+            <label>Restaurant Name</label>   
+            <%= f.text_field :name, :class => "form-control", :placeholder => 'Enter restaurant Name' %>   
+        </div>
+        <div class="form-group"> 
+          <%= f.fields_for :pictures do |p|%>
+            <label>Upload Image</label> <br/>
+            <%= p.file_field :name%>
+          <%end%>
+        </div>
+      <div>
+      <div class="form-group row">
+        <div class="text-left"> 
+          <%= link_to 'Back', { controller: 'restaurants', action: 'index'}, :class => "btn btn-warning" %>   
+        </div>
+        <div class="text-right">  
+          <%= f.submit 'Update Restaurant', :class => "btn btn-info" %>   
+        </div>
+      </div>   
+  <% end %>   
+</div>  

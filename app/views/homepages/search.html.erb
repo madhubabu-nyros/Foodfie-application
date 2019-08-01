@@ -1,0 +1,79 @@
+<div class="menu">
+	<nav class= 'navbar navbar-default navbar-fixed-top'>
+		<div>
+			<%= image_tag ("1.png")%>
+			<ul class="location">	
+				<li class="dropdown">
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SELECT LOCATION<span class="caret"></span></a>
+		      <ul class="dropdown-menu" role="menu">
+		        <input type="text" name=""> 
+		      </ul>
+		    </li>
+		  </ul>
+	  </div>
+    <div>
+      <ul class="contact">
+        <li style="margin-right: 48px;">CONTACT US</li>
+        <li>SEARCH</li>
+      </ul>
+    </div>
+	</nav>
+</div>
+<% if @items.present? %>
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="float: left;position: absolute;top: 91px;z-index: 999;">
+  	<div class="reslt_inner">
+      <ul class="filter">
+        <li>Filter</li>
+        <li>
+          <div class="select_box sort_by">
+            <label>
+              <select id="filter" class="sort">
+                <option selected="" value="id">Sort by </option>
+                <option value="ratings">Rating</option>
+                <option value="price">Price</option>
+              </select>
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="select_box rating_by">
+            <label>
+              <select id="rating_filter">
+                <option selected="" value="">All Ratings </option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+                <option value="6">6+</option>
+              </select>
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="multiselect select_box">
+            <div class="selectBox" onclick="showCheckboxes()">
+              <select>
+                <option selected="" value="">All Dietaries</option>
+              </select>
+              <div class="overSelect"></div>
+            </div>
+            <div id="checkboxes" style="background: #fff;">
+              <label for="veg" class="category">
+                <input type="checkbox" id="veg" value='2' onclick="Dietary()" />Veg</label>
+              <label for="non-veg" class="category">
+                <input type="checkbox" id="non-veg" value='1' onclick="Dietary()" />Non-veg</label>
+              <label for="drinks" class="category">
+                <input type="checkbox" id="drinks" value='0' onclick="Dietary()" />Drinks</label>
+            </div>
+          </div>
+        </li>
+      </ul> 
+    </div>
+  </div>
+  <div class="col-lg-12 col-md-12" style="position: absolute;top: 145px;">
+  	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="float: left;overflow-y: auto;height: 450px;clear: both" id='sort_items'>
+ 		  <%= render "homepages/dishes", dishes: @items %>
+  	</div>
+  	<div id='map' class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height: 550px;width: 635px;"></div>
+  </div>
+<% else %>
+  <div class="not_found">No result found</div>
+<% end %>
