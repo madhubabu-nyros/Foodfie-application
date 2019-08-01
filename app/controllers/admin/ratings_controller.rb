@@ -1,4 +1,4 @@
-class RatingsController < ApplicationController
+class Admin::RatingsController < ApplicationController
   
   def index   
     @ratings = Rating.all   
@@ -17,7 +17,7 @@ class RatingsController < ApplicationController
     @rating =  @dish.ratings.create(rating_params)
     if @rating.save   
       flash[:notice] = 'Rating added!'   
-      redirect_to ratings_path    
+      redirect_to admin_ratings_path    
     else   
       flash[:error] = 'Failed to edit rating!'   
       render :new   
@@ -32,7 +32,7 @@ class RatingsController < ApplicationController
     @rating = Rating.find(params[:id])   
     if @rating.update_attributes(rating_params)   
       flash[:notice] = 'Rating updated!'   
-      redirect_to ratings_path   
+      redirect_to admin_ratings_path   
     else   
       flash[:error] = 'Failed to edit Rating!'   
       render :edit   
@@ -43,7 +43,7 @@ class RatingsController < ApplicationController
     @rating = Rating.find(params[:id])   
     if @rating.delete   
       flash[:notice] = 'Rating deleted!'   
-      redirect_to ratings_path   
+      redirect_to admin_ratings_path   
     else   
       flash[:error] = 'Failed to delete this Rating!'   
       render :destroy   

@@ -1,7 +1,7 @@
 <div class="container">   
   <h3>Locations List</h3>   
     <div>   
-      <%= link_to 'Back', restaurants_path %> 
+      <%= link_to 'Back', admin_restaurants_path %> 
     </div>   
     <br>   
   <table border="2" class="table table-striped">   
@@ -26,9 +26,8 @@
           <td><%= l.pincode %></td>   
           <td><%= l.country %></td>   
 	        <td>   
-	          <%= link_to 'Show', location_path(l) %>   
-	          <%= link_to 'Edit', edit_location_path(l) %>   
-	          <%= link_to 'Delete', location_path(l), method: :delete %>   
+	          <%= link_to 'Edit', edit_admin_location_path(l), :class => 'btn btn-warning' %>   
+	          <%= link_to 'Delete', admin_location_path(l), method: :delete, :class => 'btn btn-danger' %>   
 	        </td>   
 	      </tr>   
 	    <% end %>   

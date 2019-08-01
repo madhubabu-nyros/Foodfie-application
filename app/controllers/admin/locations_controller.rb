@@ -1,4 +1,4 @@
-class LocationsController < ApplicationController
+class Admin::LocationsController < ApplicationController
   def index   
     @locations = Location.all   
   end   
@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
     @location =  @restaurant.locations.create(location_params)
     if @location.save   
       flash[:notice] = 'Location added!'   
-      redirect_to locations_path    
+      redirect_to admin_locations_path    
     else   
       flash[:error] = 'Failed to edit location!'   
       render :new   
@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])   
     if @location.update_attributes(location_params)   
       flash[:notice] = 'Location updated!'   
-      redirect_to locations_path   
+      redirect_to admin_locations_path   
     else   
       flash[:error] = 'Failed to edit Location!'   
       render :edit   
@@ -42,7 +42,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])   
     if @location.delete   
       flash[:notice] = 'Location deleted!'   
-      redirect_to locations_path   
+      redirect_to admin_locations_path   
     else   
       flash[:error] = 'Failed to delete this Location!'   
       render :destroy   

@@ -1,4 +1,4 @@
-class DishesController < ApplicationController
+class Admin::DishesController < ApplicationController
 
   def index   
     @dishes = Dish.all   
@@ -18,7 +18,7 @@ class DishesController < ApplicationController
     @dish =  @restaurant.dishes.create(dish_params)
     if @dish.save   
       flash[:notice] = 'dish added!'   
-      redirect_to dishes_path    
+      redirect_to admin_dishes_path    
     else   
       flash[:error] = 'Failed to edit dish!'   
       render :new   
@@ -33,7 +33,7 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])   
     if @dish.update_attributes(dish_params)   
       flash[:notice] = 'Dish updated!'   
-      redirect_to dishes_path   
+      redirect_to admin_dishes_path   
     else   
       flash[:error] = 'Failed to edit Dish!'   
       render :edit   
@@ -44,7 +44,7 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])   
     if @dish.delete   
       flash[:notice] = 'Dish deleted!'   
-      redirect_to dishes_path   
+      redirect_to admin_dishes_path   
     else   
       flash[:error] = 'Failed to delete this Dish!'   
       render :destroy   
@@ -52,6 +52,6 @@ class DishesController < ApplicationController
   end 
 
   def dish_params   
-    params.require(:dish).permit(:name, :price, :category_id, :restaurant_id, pictures_attributes: [:name])   
+    params.require(:dish).permit(:name, :price, :category_id, :restaurant_id, pictures_attributes: [:id, :name])   
   end 
 end

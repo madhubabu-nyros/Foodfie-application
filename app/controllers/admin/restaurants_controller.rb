@@ -1,4 +1,4 @@
-class RestaurantsController < ApplicationController
+class Admin::RestaurantsController < ApplicationController
   
   def index   
     @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 10)   
@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)   
     if @restaurant.save   
       flash[:notice] = 'restaurant added!'   
-      redirect_to restaurants_path   
+      redirect_to admin_restaurants_path   
     else   
       flash[:error] = 'Failed to edit restaurant!'   
       render :new   
@@ -32,7 +32,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])   
     if @restaurant.update_attributes(restaurant_params)   
       flash[:notice] = 'Restaurant updated!'   
-      redirect_to restaurants_path   
+      redirect_to admin_restaurants_path   
     else   
       flash[:error] = 'Failed to edit Restaurant!'   
       render :edit   
@@ -43,7 +43,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.delete   
       flash[:notice] = 'Restaurant deleted!'   
-      redirect_to restaurants_path   
+      redirect_to admin_restaurants_path   
     else   
       flash[:error] = 'Failed to delete this Restaurant!'   
       render :destroy   
@@ -51,6 +51,6 @@ class RestaurantsController < ApplicationController
   end   
 
   def restaurant_params   
-    params.require(:restaurant).permit(:name, pictures_attributes: [:name])   
+    params.require(:restaurant).permit(:name, pictures_attributes: [:id, :name])   
   end
 end

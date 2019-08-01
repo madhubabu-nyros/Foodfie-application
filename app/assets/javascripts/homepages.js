@@ -1,18 +1,4 @@
 $(document).ready(function () {
-  var page = 2;
-  $('#load-more').click(function (e) {
-    e.preventDefault();
-    $.ajax({
-        type: "GET",
-        url: $(this).attr('href'),
-        data: {page_no: page},
-        dataType: "script",
-        success: function () {
-          $('#load-more').show();
-          page++;
-        }
-    });
-  });
   $('.sort').on('change', function (e) {
     var name = getUrlVars()["name"];
     e.preventDefault();

@@ -1,17 +1,16 @@
 <div class="container">
-	<div>
-		<%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+	<div style="text-align: right;">
+		<%= link_to 'Log out', destroy_admin_session_path, method: :delete, :class => 'btn btn-danger' %>
 	</div>
-	<div>
-		<%= link_to 'Restaurants', restaurants_path %>
+	<div class="dashboard">
+		<div style="margin-right: 15px">
+			<%= link_to 'Restaurants', admin_restaurants_path, :class => 'btn btn-info' %>
+		</div>	
+		<div style="margin-right: 15px">
+			<%= link_to 'Dishes', admin_dishes_path, :class => 'btn btn-info' %>
+		</div>
+		<div>	
+			<%= link_to 'Ratings', admin_ratings_path, :class => 'btn btn-info' %>
+		</div>
 	</div>	
-	<div>
-		<%= link_to 'Dishes', dishes_path %>
-	</div>
-	<div>	
-		<%= link_to 'Categories', categories_path %>
-	</div>
-	<div>	
-		<%= link_to 'Ratings', ratings_path %>
-	</div>
 </div>

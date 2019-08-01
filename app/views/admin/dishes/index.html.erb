@@ -1,7 +1,7 @@
 <div class="container">   
   <h3>DISH LIST</h3>   
     <div>   
-      <%= link_to 'Back', restaurants_path,  :class => 'btn btn-primary' %>   
+      <%= link_to 'Back', admin_restaurants_path,  :class => 'btn btn-primary' %>   
     </div>   
     <br>   
   <table border="2" class="table table-striped">   
@@ -26,10 +26,10 @@
             <% end %> 
           </td>  
           <td><%= d.price %></td>   
-          <td><%= link_to 'Add Rating', new_dish_rating_path(d),  :class => 'btn btn-warning' %></td>   
+          <td><%= link_to 'Add Rating', new_admin_dish_rating_path(d),  :class => 'btn btn-warning' %></td>   
           <td>   
-            <%= link_to 'Edit', edit_dish_path(d), :class => 'btn btn-info' %>   
-            <%= link_to 'Delete', dish_path(d), method: :delete, :class => 'btn btn-danger' %>   
+            <%= link_to 'Edit', edit_admin_dish_path(d), :class => 'btn btn-info' %>   
+            <%= link_to 'Delete', admin_dish_path(d), method: :delete, :class => 'btn btn-danger' %>   
           </td>   
         </tr>   
       <% end %>   

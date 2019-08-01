@@ -1,0 +1,14 @@
+<div class="restaurant1">
+	<% @restaurant.pictures.each do|p|%>
+		<div><%= image_tag p.name_url, :style => 'height:300px;width:300px' %></div>
+	<% end %>
+	<div class="r-name"><%= @restaurant.name %></div>
+	<div style="text-align: center;"><b>Dishes:</b><%= @restaurant.dishes.pluck(:name).join(',')%></div>
+	<div style="margin-left: 15px">
+		<% @restaurant.locations.each do|l|%>
+			<div><b>Address:</b></div>
+			<div class=""><%= l.street %>, <%= l.city %>, <%= l.state %>, <%= l.pincode %>, <%= l.country %></div>
+		<% end %>
+	</div>	
+	<%= link_to 'Back', admin_restaurants_path,  :class => 'btn btn-primary', :style => 'margin-left: 110px;margin-top: 20px' %>
+</div>	
