@@ -1,30 +1,31 @@
 <div class="container">   
-  <h3>Rating List</h3>
-  <div>   
-    <%= link_to 'Back', admin_restaurants_path,  :class => 'btn btn-primary' %>   
-  </div>   
-  <br>    
-  <table border="2" class="table table-striped">   
-    <thead>   
-    <tr>   
-      <th>Id</th>   
-      <th>Dish</th>   
-      <th>Rating</th>   
-      <th>Actions</th>   
-    </tr>  
-    </thead>   
-    <tbody>   
-	    <% @ratings.each do |r| %>   
-	      <tr>   
-	        <td><%= r.id %></td>   
-	        <td><%= r.dish.name %></td>   
-	        <td><%= r.number %></td>   
-	        <td>   
-	          <%= link_to 'Edit', edit_admin_rating_path(r), :class => 'btn btn-warning' %>   
-	          <%= link_to 'Delete', admin_rating_path(r), method: :delete, :class => 'btn btn-danger' %>   
-	        </td>   
-	      </tr>   
-	    <% end %>   
-    </tbody>   
-  </table>   
+    <h3>Rating List</h3>
+    <div>   
+        <%= link_to 'Back', admin_dishes_path,  :class => 'btn btn-primary' %>   
+    </div>   
+    <br>    
+    <table border="2" class="table table-striped">   
+        <thead>   
+            <tr>   
+                <th>Id</th>   
+                <th>Dish</th>   
+                <th>Rating</th>   
+                <th>Actions</th>   
+             </tr>  
+        </thead>   
+        <tbody>   
+    	    <% @ratings.each do |r| %>   
+    	        <tr>   
+        	        <td><%= r.id %></td>   
+        	        <td><%= r.dish.name %></td>   
+        	        <td><%= r.number %></td>   
+        	        <td>   
+        	          <%= link_to 'Edit', edit_admin_rating_path(r), :class => 'btn btn-warning' %>   
+    	          <%= link_to 'Delete', admin_rating_path(r), method: :delete, :class => 'btn btn-danger' %>   
+    	            </td>   
+    	        </tr>   
+    	    <% end %>   
+        </tbody>   
+    </table> 
+    <div class="page"><%= will_paginate @restaurants %></div>  
 </div>

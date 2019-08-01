@@ -4,27 +4,27 @@
 			<%= image_tag ("1.png")%>
 			<ul class="location">	
 				<li class="dropdown">
-		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SELECT LOCATION<span class="caret"></span></a>
-		      <ul class="dropdown-menu" role="menu">
-		        <input type="text" name=""> 
-		      </ul>
-		    </li>
-		  </ul>
-	  </div>
-	  <div>
-	  	<ul class="contact">
-	  		<li style="margin-right: 48px;">CONTACT US</li>
-	  		<li>SEARCH</li>
-	  	</ul>
-	  </div>
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SELECT LOCATION<span class="caret"></span></a>
+		    		<ul class="dropdown-menu" role="menu">
+		        		<input type="text" name=""> 
+		      		</ul>
+		    	</li>
+			</ul>
+	    </div>
+		<div>
+		  	<ul class="contact">
+		  		<li style="margin-right: 48px;">CONTACT US</li>
+		  		<li>SEARCH</li>
+		  	</ul>
+		</div>
 	</nav>
 </div>
 <div class="bg">
 	<div class="title">What do you <i>really</i> feel like?</div>
 		<div class="search">
-			<%= form_tag(search_dish_path, :method => "get", enforce_utf8: false) do %>  
-		    <%= text_field_tag :name, params[:name], placeholder: "Chips and burgers", class: "food_search" %>  
-		      <%= image_tag ("3.png")%><%= button_tag "Search", :class => 'btn btn-default search-color',:name => nil, :type =>'submit' %>  
+			<%= form_tag(search_dish_path, :method => "get", enforce_utf8: false) do %>
+			    <%= text_field_tag :name, params[:name], placeholder: "Chips and burgers", class: "food_search" %>  
+		        <%= image_tag ("3.png")%><%= button_tag "Search", :class => 'btn btn-default search-color',:name => nil, :type =>'submit' %>  
 			<% end %>
 		</div>
 	</div>		
@@ -32,15 +32,14 @@
 <h2 class="sec_title">TOP RATED DISHES</h2>
 <div class="container">
 	<div id="items" class="col-md-12">
-		 <%= render "homepages/items", dishes: @items %>
+		<%= render "homepages/items", dishes: @items %>
 	</div>
 	<% if @items.next_page %>
-  <div class="link more btn_outer">
-    <%= link_to 'See More Food', homepages_index_path(:page => @items.next_page), :class => 'next_page', :remote => true if @items.next_page %>
-  </div>
-<% end %>
+  		<div class="link more btn_outer">
+		    <%= link_to 'See More Food', homepages_index_path(:page => @items.next_page), :class => 'next_page', :remote => true if @items.next_page %>
+  		</div>
+	<% end %>
 </div>
-
 <footer id="ftr">
 	<div class="ftr-text">Do more with the app. Download it today!</div>
 	<div class="col-md-8 apps"><%= image_tag ("6.png"), :style => 'margin-right:16px;'%><%= image_tag ("7.png")%></div>

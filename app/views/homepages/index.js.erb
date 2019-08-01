@@ -1,6 +1,6 @@
 $('#items').append('<%= j render "homepages/items", dishes: @items %>');
 <% if @items.next_page %>
-  $('.next_page').attr('href','<%= homepages_index_path(:page => @items.next_page) %>');
+	$('.next_page').attr('href','<%= homepages_index_path(:page => @items.next_page) %>');
 <% else %>
-  $('.more').remove();
+  	$('.more').remove();
 <% end %>

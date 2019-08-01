@@ -2,55 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.text-left
-{
+.text-left {
 	margin-left: 14px;
 }
-.text-right
-{
+.text-right {
 	margin-left: 47px;
 }
-.image
-{
+.image {
 	height: 50px;
   width: 67px;
 }
-.page
-{
+.page {
 	margin: 35px auto;
 	width: 177px;
 }
-.current
-{
+.current {
 	margin-left: 10px;
-  margin-right: 10px;
+    margin-right: 10px;
 }
-
-.modal-center
-{
+.modal-center {
 	width: 296px;
 }
-.modal-body  img
-{
-  width: 257px;
+.modal-body  img {
+    width: 257px;
 }
 .restaurant1 {
-	border-radius: 5px;
-  margin: 100px auto;
-  width: 392px;
-  border: 1px solid #ccc;
-  padding: 50px;
+    border-radius: 5px;
+    margin: 100px auto;
+    width: 392px;
+    border: 1px solid #ccc;
+    padding: 50px;
 }
 .r-name {
-	text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
 }   
 .dashboard {
 	display: -webkit-box;
-  border: 1px solid #ccc;
-  width: 342px;
-  padding: 17px;
-  margin: auto;
-  border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 342px;
+    padding: 17px;
+    margin: auto;
+    border-radius: 5px;
 } 

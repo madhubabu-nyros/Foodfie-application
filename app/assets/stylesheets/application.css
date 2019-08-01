@@ -14,10 +14,10 @@
  *= require_self
  */
 .alert-alert {
-  @extend .alert-warning;
+  	@extend .alert-warning;
 }
 
 .alert-notice {
-  @extend .alert-info;
+  	@extend .alert-info;
 }
 @import "bootstrap";

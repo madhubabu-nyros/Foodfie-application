@@ -1,38 +1,55 @@
 <div class="container">   
-  <h3>DISH LIST</h3>   
+    <h3>DISH LIST</h3>   
     <div>   
-      <%= link_to 'Back', admin_restaurants_path,  :class => 'btn btn-primary' %>   
+        <%= link_to 'Back', admin_restaurants_path,  :class => 'btn btn-primary' %>   
     </div>   
     <br>   
-  <table border="2" class="table table-striped">   
-    <thead>   
-    <tr>   
-      <th>Id</th>   
-      <th>Name</th>   
-      <th>Image</th>   
-      <th>Price</th>   
-      <th>Rating</th>   
-      <th>Actions</th>   
-    </tr>   
-    </thead>   
-    <tbody>   
-      <% @dishes.each do |d| %>   
-        <tr>   
-          <td><%= d.id %></td>   
-          <td><%= d.name %></td> 
-          <td style="width: 100px;">
-            <% d.pictures.each do|p|%>
-              <%= image_tag(p.name_url, :class => 'image') %> 
-            <% end %> 
-          </td>  
-          <td><%= d.price %></td>   
-          <td><%= link_to 'Add Rating', new_admin_dish_rating_path(d),  :class => 'btn btn-warning' %></td>   
-          <td>   
-            <%= link_to 'Edit', edit_admin_dish_path(d), :class => 'btn btn-info' %>   
-            <%= link_to 'Delete', admin_dish_path(d), method: :delete, :class => 'btn btn-danger' %>   
-          </td>   
-        </tr>   
-      <% end %>   
-    </tbody>   
-  </table>   
+    <table border="2" class="table table-striped">   
+        <thead>   
+            <tr>   
+                <th>Id</th>   
+                <th>Name</th>   
+                <th>Image</th>   
+                <th>Price</th>   
+                <th>Rating</th>   
+                <th>Rating</th>   
+                <th>Actions</th>   
+            </tr>   
+        </thead>   
+        <tbody>   
+            <% @dishes.each do |d| %>   
+                <tr>   
+                    <td><%= d.id %></td>   
+                    <td><%= d.name %></td> 
+                    <td style="width: 100px;">
+                        <% d.pictures.each do|p|%>
+                            <%= image_tag p.name_url, :class => 'image', "data-toggle"=>"modal", "data-target" => "#img-#{d.id}" %>
+                            <div class="modal fade" id="img-<%= d.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document" style="margin-top: 90px;">
+                                    <div class="modal-content modal-center">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button> 
+                                        </div>
+                                        <div class="modal-body">
+                                            <%= image_tag p.name_url %>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %> 
+                    </td>  
+                    <td><%= d.price %></td>  
+                    <td><%= d.ratings.average(:number) %></td> 
+                    <td><%= link_to 'Add Rating', new_admin_dish_rating_path(d),  :class => 'btn btn-warning' %></td>   
+                    <td>   
+                        <%= link_to 'Edit', edit_admin_dish_path(d), :class => 'btn btn-info' %>   
+                        <%= link_to 'Delete', admin_dish_path(d), method: :delete, data: {confirm: "Are you sure?"} ,:class => 'btn btn-danger' %>   
+                    </td>   
+                </tr>   
+            <% end %>   
+        </tbody>   
+    </table> 
+    <div class="page"><%= will_paginate @restaurants %></div>  
 </div>

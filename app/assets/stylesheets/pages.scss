@@ -2,20 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
-a
-{
+a {
 	cursor: pointer;
 }
-.center
-{
-	width: 350px;
-  margin: 124px auto;
-  border: 1px solid #ccc;
-  padding: 44px;
-  border-radius: 5px;
-  box-shadow: 1px 7px #eee;
+.center {
+  	width: 350px;
+  	margin: 124px auto;
+  	border: 1px solid #ccc;
+  	padding: 44px;
+  	border-radius: 5px;
+  	box-shadow: 1px 7px #eee;
 }    
-.actions
-{
-  margin-left: 85px;
+.actions {
+  	margin-left: 85px;
 }
