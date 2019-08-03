@@ -16,7 +16,7 @@ class Admin::DishesController < ApplicationController
         @dish =  @restaurant.dishes.create(dish_params)
         if @dish.save   
             flash[:notice] = 'dish added!'   
-            redirect_to admin_dishes_path    
+            redirect_to admin_restaurants_path    
         else   
             flash[:error] = 'Failed to edit dish!'   
             render :new   
@@ -31,7 +31,7 @@ class Admin::DishesController < ApplicationController
         @dish = Dish.find(params[:id])   
         if @dish.update_attributes(dish_params)   
             flash[:notice] = 'Dish updated!'   
-            redirect_to admin_dishes_path   
+            redirect_to admin_restaurants_path   
         else   
             flash[:error] = 'Failed to edit Dish!'   
             render :edit   

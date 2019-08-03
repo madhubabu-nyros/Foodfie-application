@@ -1,24 +1,48 @@
-<% @items.each do |d| %>
-	<% d.pictures.each do|p|%>
-	  <div class="col-md-4 image-box">
-	  	<div class="card">
-				<%= image_tag(p.name_url, :class => 'image-box1') %>
-				<div class="rating"><%= d.ratings.average(:number) %></div>
-				<div class="votes"><%= d.ratings.count(:number) %> votes</div>
-				<figcaption>
-					<h2 class="caption"><%= d.name %></h2>
-					<% d.restaurants.each do |r|%>
-						<h2 class="restaurant"><%= r.name %><span style="float: right;margin-right: 10px;font-weight: bold;">$<%= d.price%></span></h2>	
-					<% end %>
-				</figcaption>
-			</div>
-			<div class="location1">	
-				<% d.restaurants.each do |r|%>
-					<% r.locations.each do |l| %>
-							<div class="address"><%= image_tag ("4.png"), :style => 'width:25px;' %><%= l.street %>, <%= l.city %>, <%= l.state %>, <%= l.pincode %>, <%= l.country %></div>
-					<% end %>
-				<% end %>
-			</div>	
+<div class="menu">
+	<nav class= 'navbar navbar-default navbar-fixed-top'>
+		<div>
+			<%= image_tag ("1.png")%>
+			<ul class="location">	
+				<li class="dropdown">
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SELECT LOCATION<span class="caret"></span></a>
+		      <ul class="dropdown-menu" role="menu">
+		        <input type="text" name=""> 
+		      </ul>
+		    </li>
+		  </ul>
+	  </div>
+	  <div>
+	  	<ul class="contact">
+	  		<li style="margin-right: 48px;">CONTACT US</li>
+	  		<li>SEARCH</li>
+	  	</ul>
+	  </div>
+	</nav>
+</div>
+<div class="dish">
+	<div class="col-md-3"  style="float: left;clear: both">
+		<% @items.pictures.each do|p|%>
+				<%= image_tag(p.name_url.to_s, :class => 'image-box3') %><span class="caption1"><%= @items.name %></span>
+			<% end %>
+		<% @items.restaurants.each do|r|%>
+				<h2 class="restaurant_title"><%= r.name %></h2>
+		<% end %>
+		<hr> 
+	</div>
+	<div class="col-md-9 image-box"  style="float: left">
+		<div class="card">
+			<% @items.pictures.each do|p|%>
+				<%= image_tag(p.name_url.to_s, :class => 'image-box2') %>
+			<% end %>
+			<%= image_tag ("8.png") , :class => "fav"%>
+			<div class="rating"><%= @items.ratings.average(:number) %></div>
+			<div class="votes"><%= @items.ratings.count(:number) %> votes</div>
+			<figcaption>
+				<h2 class="caption"><%= @items.name %></h2>
+				<% @items.restaurants.each do|r|%>
+					<h2 class="restaurant"><%= r.name %><span style="float: right;margin-right: 10px;font-weight: bold;">$<%= @items.price%></span></h2>
+				<% end %> 	
+			</figcaption>
 		</div>
-	<% end %>
-<% end %>
+	</div>
+</div>	

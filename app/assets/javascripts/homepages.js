@@ -68,23 +68,49 @@ function Dietary() {
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'),{
         center: {lat: 16.9891, lng: 82.2475} ,
-        zoom: 8,
+        zoom: 14,
     });
     var location = gon.locations;
     var restaurant = gon.restaurants;
-    for(var i = 0 ; i < location.length; i++ ){
-        var marker = new google.maps.Marker({
+    var pictures = gon.pictures;
+    var dishes = gon.dishes_count;
+    var infowindow = new google.maps.InfoWindow()
+    for(var i = 0 ; i < location.length; i++ ) {
+            var marker = new google.maps.Marker({
             position: {lat: location[i][0].latitude, lng: location[i][0].longitude},
             map: map,
             title: restaurant[i][0].name,
+           label: {
+                color: 'white',
+                fontWeight: 'bold',
+                text: ''+dishes[i],
+              },
             icon: {
             path: 'M22-48h-44v43h16l6 5 6-5h16z',  
             fillColor: '#697f8c',
             fillOpacity: 1,
             strokeColor: '#FFFFFF',
             strokeWeight: 5,
-            labelClass: "label", 
+            labelClass: "label",
+            labelOrigin: new google.maps.Point(0, -27), 
             }
-        }); 
+        });
+        var content = '<div><img src='+pictures[i][0].name.url+' style="width:300px;height: 300px;"></div><div class="map-restaurant">'+restaurant[i][0].name+'</div><div>'+location[i][0].street+', '+location[i][0].city+', '+location[i][0].state+',<br/ >'+location[i][0].pincode+', '+location[i][0].country+'</div>';     
+        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow, i){ 
+        	return function() {
+           		infowindow.setContent(content);
+           		infowindow.open(map,marker);
+                var res = restaurant[i][0].id;
+                console.log('res', res)
+                $.ajax({
+                    type: "GET",
+                    url: $(this).attr('href'),
+                    data: {restaurant: res},
+                    dataType: "script",
+                    success: function () {
+                    }
+                });
+        	};
+       	})(marker,content,infowindow, i)); 
     }
 }

@@ -2,8 +2,8 @@
 	<% @restaurant.pictures.each do|p|%>
 		<div><%= image_tag p.name_url, :style => 'height:300px;width:300px' %></div>
 	<% end %>
-	<div class="r-name"><%= @restaurant.name %></div>
-	<div style="text-align: center;"><b>Dishes:</b><%= @restaurant.dishes.pluck(:name).join(',')%></div>
+	<h3 class="r-name"><%= @restaurant.name %></h3>
+	<div style="margin-left: 16px;"><b>Dishes:</b><%= @restaurant.dishes.pluck(:name).join(',')%></div>
 	<div style="margin-left: 15px">
 		<% @restaurant.locations.each do|l|%>
 			<div><b>Address:</b></div>
