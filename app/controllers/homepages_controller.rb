@@ -9,7 +9,7 @@ class HomepagesController < ApplicationController
 	end
 
 	def show
-    	@items = Dish.find(params[:id])
+	  	@items = Dish.find(params[:id])
 	end
 
 	def search 
@@ -36,6 +36,7 @@ class HomepagesController < ApplicationController
 	end
 
 	private
+	
 	def map
 		@items = Dish.search(params[:name])
 		restaurants = []

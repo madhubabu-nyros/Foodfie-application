@@ -1,4 +1,4 @@
 class Rating < ApplicationRecord
 	belongs_to :dish
-	validates :number, presence: true
+	validates_presence_of :number, message: '*Enter Rating'
 end

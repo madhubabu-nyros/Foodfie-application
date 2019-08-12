@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //Dishes sort by price or ratings  
   $('.sort').on('change', function (e) {
         var name = getUrlVars()["name"];
         e.preventDefault();
@@ -19,6 +20,7 @@ $(document).ready(function () {
             }
         }); 
     });
+    //Dishes sort by given rating value 
     $('#rating_filter').on('change', function (e) {
         var name = getUrlVars()["name"];
         e.preventDefault();
@@ -31,8 +33,26 @@ $(document).ready(function () {
             }
         }); 
     }); 
+    //Hide dietary drop down list
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.selectBox').length) {
+            if (!$(event.target).closest('#checkboxes').length) {
+                $('#checkboxes').hide();
+            }
+        }
+    });
+    //focus for seach text field
+    $('#s').click(function() {
+        $('html, body').animate({scrollTop: 0 }, 'slow');
+        $('.food_search').focus();
+    });
+    //scroll down 
+    $("#c").click(function(){
+        $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    });
     google.maps.event.addDomListener(window, 'load', initMap);
 });
+//Get values from URL
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -40,6 +60,7 @@ function getUrlVars() {
     });
     return vars;
 }
+//show and hide the deitary drop down box
 var expanded = false;
 function showCheckboxes() {
     var checkboxes = document.getElementById("checkboxes");
@@ -51,6 +72,7 @@ function showCheckboxes() {
         expanded = false;
     }
 }
+//Dishes sory by dietary
 function Dietary() {
     var category = [];
     $.each($("input[type='checkbox']:checked"), function(){            
@@ -65,6 +87,7 @@ function Dietary() {
         });
     });
 }
+//Markers for given Restaurant location
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'),{
         center: {lat: 16.9891, lng: 82.2475} ,
@@ -80,11 +103,11 @@ function initMap() {
             position: {lat: location[i][0].latitude, lng: location[i][0].longitude},
             map: map,
             title: restaurant[i][0].name,
-           label: {
-                color: 'white',
-                fontWeight: 'bold',
-                text: ''+dishes[i],
-              },
+            label: {
+                 color: 'white',
+                 fontWeight: 'bold',
+                 text: ''+dishes[i],
+               },
             icon: {
             path: 'M22-48h-44v43h16l6 5 6-5h16z',  
             fillColor: '#697f8c',
@@ -94,7 +117,7 @@ function initMap() {
             labelClass: "label",
             labelOrigin: new google.maps.Point(0, -27), 
             }
-        });
+        }); 
         var content = '<div><img src='+pictures[i][0].name.url+' style="width:300px;height: 300px;"></div><div class="map-restaurant">'+restaurant[i][0].name+'</div><div>'+location[i][0].street+', '+location[i][0].city+', '+location[i][0].state+',<br/ >'+location[i][0].pincode+', '+location[i][0].country+'</div>';     
         google.maps.event.addListener(marker,'click', (function(marker,content,infowindow, i){ 
         	return function() {

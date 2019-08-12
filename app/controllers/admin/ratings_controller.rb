@@ -17,9 +17,9 @@ class Admin::RatingsController < ApplicationController
         @rating =  @dish.ratings.create(rating_params)
         if @rating.save   
             flash[:notice] = 'Rating added!'   
-            redirect_to admin_dishes_path    
+            redirect_to admin_ratings_path    
         else   
-            flash[:error] = 'Failed to edit rating!'   
+            flash[:error] = 'Failed to create rating!'   
             render :new   
         end   
     end   
@@ -32,7 +32,7 @@ class Admin::RatingsController < ApplicationController
         @rating = Rating.find(params[:id])   
         if @rating.update_attributes(rating_params)   
             flash[:notice] = 'Rating updated!'   
-            redirect_to admin_dishes_path   
+            redirect_to admin_ratings_path     
         else   
             flash[:error] = 'Failed to edit Rating!'   
             render :edit   

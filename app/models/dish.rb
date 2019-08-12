@@ -4,7 +4,8 @@ class Dish < ApplicationRecord
   has_and_belongs_to_many :restaurants
   belongs_to :category, optional: true	
   accepts_nested_attributes_for :pictures, :allow_destroy => true
-  validates :name, presence: true
+  validates_presence_of :name, message: '*Enter Dish name'
+  validates_presence_of :price, message: '*Enter Dish Price'
   validates :category_id, presence: true
   scope :search, ->(searchdish) {where("name LIKE ?", "#{searchdish}%")}
   scope :sortby_price, ->(price) {order(price)}

@@ -1,8 +1,23 @@
 <div class="container center">   
-  <%= form_for @rating, url: {action: :create} do |f| %>   
-      <div>   
-        <h3>Add Rating</h3>   
-      </div>
-      <%= render :partial => "form", :locals => {:f => f} %>  
-  <% end %>   
+<%= form_for @rating, url: {action: :create} do |f| %>   
+	<div>   
+	    <h3>Add Rating</h3>   
+	</div>
+	<div>   
+	  	<div class="form-group">   
+	    	<label>Rating</label>   
+	    	<%= f.text_field :number, :class => "form-control", :placeholder => 'Enter Rating' %> 
+	    	<span class="err"><%= @rating.errors[:number].join('. ') %></span>  
+		</div>
+		<div>
+		<div class="form-group row">
+	 		<div class="text-left"> 
+	    		<%= link_to 'Back to Dish', admin_dishes_path, :class => "btn btn-warning" %> 
+			</div>
+	  		<div class="text-right">  
+	    		<%= f.submit 'Save', :class => "btn btn-info" %>   
+	  		</div>
+		</div>
+	</div>   
+<% end %>   
 </div>  

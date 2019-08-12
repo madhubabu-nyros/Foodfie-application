@@ -15,10 +15,10 @@ class Admin::LocationsController < ApplicationController
         @restaurant = Restaurant.find(params[:restaurant_id])
         @location =  @restaurant.locations.create(location_params)
         if @location.save   
-            flash[:notice] = 'Location added!'   
-            redirect_to admin_locations_path    
+            flash[:notice] = 'Location added!'
+            redirect_to admin_restaurants_path    
         else   
-            flash[:error] = 'Failed to edit location!'   
+            flash[:error] = 'Failed to create location!'   
             render :new   
         end   
     end   
@@ -30,8 +30,8 @@ class Admin::LocationsController < ApplicationController
     def update   
         @location = Location.find(params[:id])   
         if @location.update_attributes(location_params)   
-            flash[:notice] = 'Location updated!'   
-            redirect_to admin_locations_path   
+            flash[:notice] = 'Location updated!' 
+            redirect_to admin_locations_path            
         else   
             flash[:error] = 'Failed to edit Location!'   
             render :edit   

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     devise_for :admin
     devise_scope :admin do
         authenticated :admin do
-            root to: 'homepages#index', as: :authenticated_root
+            root to: 'pages#dashboard', as: :authenticated_root
         end
         unauthenticated do
             root :to => 'admin/sessions#new', as: :unauthenticated_root
@@ -40,5 +40,6 @@ Rails.application.routes.draw do
     #home page
     get '/search' => 'homepages#index', :as => 'home' 
     get '/dish/search' => 'homepages#search', :as => 'search_dish' 
+    get '/dish/map' => 'homepages#map'
     get '/dishes/:id' => 'homepages#show', :as => 'dishes_show' 
 end

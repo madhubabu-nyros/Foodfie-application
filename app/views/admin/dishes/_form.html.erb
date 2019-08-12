@@ -1,12 +1,13 @@
 <div>   
-    <%= "<div>#{@dish.errors.full_messages.first}</div>".html_safe if @dish.errors.any? %>   
     <div class="form-group">   
         <label>Dish Name</label>   
-        <%= f.text_field :name, :class => "form-control", :placeholder => 'Enter Dish Name' %>   
+        <%= f.text_field :name, :class => "form-control", :placeholder => 'Enter Dish Name' %>
+        <span class="err"><%= @dish.errors[:name].join('. ') %></span>    
     </div>
     <div class="form-group">   
         <label>Price</label>   
-        <%= f.text_field :price, :class => "form-control", :placeholder => 'Enter price' %>   
+        <%= f.text_field :price, :class => "form-control", :placeholder => 'Enter price' %>
+        <span class="err"><%= @dish.errors[:price].join('. ') %></span>
     </div>
     <div class="form-group">
 	    <label>Category</label>   
@@ -16,6 +17,7 @@
         <%= f.fields_for :pictures do |p|%>
             <label>Upload Image</label> <br/>
             <%= p.file_field :name%>
+            <%= p.hidden_field :name %>
         <%end%>
     </div>	
 <div>

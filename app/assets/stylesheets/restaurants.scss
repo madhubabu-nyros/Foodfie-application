@@ -1,12 +1,5 @@
-// Place all the styles related to the restaurants controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.text-left {
-	margin-left: 14px;
-}
 .text-right {
-	margin-left: 47px;
+	margin-left: 16px;
 }
 .image {
 	height: 50px;
@@ -41,8 +34,33 @@
 .dashboard {
 	display: -webkit-box;
     border: 1px solid #ccc;
-    width: 342px;
-    padding: 17px;
-    margin: auto;
+    width: 464px;
+    padding: 50px;
+    margin: 125px auto;
     border-radius: 5px;
+    background: #f5f5f5;
+    box-shadow: 1px 2px #dedada;
 } 
+.pwd
+{
+    margin: 100px auto;
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 74px;
+}
+.pwd1
+{
+    margin: 100px auto;
+    width: 367px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 50px;
+}
+.err {
+    font-size: 13px;
+    color: red;
+}
+.image:hover {
+    cursor: pointer;
+}
