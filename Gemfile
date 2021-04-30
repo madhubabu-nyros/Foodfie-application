@@ -82,5 +82,5 @@ gem 'will_paginate-bootstrap4'
 #Use for Google Maps
 gem 'geocoder'
 #Use for send some data to js files
-gem 'gon', '~> 6.2', '>= 6.2.1'
+gem 'gon', '~> 6.4'
 gem 'rails-controller-testing'
